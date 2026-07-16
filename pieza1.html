@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pieza I | NCY</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#0b0b0b;
+color:white;
+font-family:'Old Standard TT',serif;
+}
+
+.volver{
+
+position:fixed;
+top:25px;
+left:25px;
+
+padding:12px 22px;
+
+border:1px solid white;
+
+text-decoration:none;
+
+color:white;
+
+letter-spacing:2px;
+
+transition:.4s;
+
+z-index:999;
+
+background:rgba(0,0,0,.5);
+
+}
+
+.volver:hover{
+
+background:white;
+color:black;
+
+}
+
+header{
+
+padding:70px 20px 30px;
+
+text-align:center;
+
+}
+
+header img{
+
+width:160px;
+
+margin-bottom:25px;
+
+}
+
+header h1{
+
+font-family:'Cinzel',serif;
+
+font-size:55px;
+
+letter-spacing:6px;
+
+margin-bottom:15px;
+
+}
+
+header h2{
+
+font-weight:normal;
+
+font-size:28px;
+
+letter-spacing:2px;
+
+color:#dddddd;
+
+margin-bottom:40px;
+
+}
+
+.descripcion{
+
+max-width:850px;
+
+margin:auto;
+
+text-align:center;
+
+line-height:2;
+
+font-size:20px;
+
+color:#d4d4d4;
+
+padding:0 20px;
+
+}
+
+.linea{
+
+width:140px;
+
+height:1px;
+
+background:white;
+
+margin:50px auto;
+
+opacity:.3;
+
+}
+
+.principal{
+
+width:90%;
+
+max-width:1000px;
+
+margin:0 auto 60px;
+
+}
+
+.principal img{
+
+width:100%;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.principal img:hover{
+
+transform:scale(1.02);
+
+}
+
+.galeria{
+
+width:90%;
+
+max-width:1000px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+padding-bottom:90px;
+
+}
+
+.galeria img{
+
+width:100%;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.galeria img:hover{
+
+transform:scale(1.03);
+
+}
+
+.fade{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:1s;
+
+}
+
+.fade.visible{
+
+opacity:1;
+
+transform:none;
+
+}
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+letter-spacing:2px;
+
+color:#777;
+
+}
+
+/* ---------- VISOR ---------- */
+
+.lightbox{
+
+display:none;
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,.96);
+
+justify-content:center;
+
+align-items:center;
+
+z-index:9999;
+
+flex-direction:column;
+
+}
+
+.lightbox img{
+
+max-width:92%;
+
+max-height:82vh;
+
+}
+
+.cerrar{
+
+position:absolute;
+
+top:25px;
+
+right:35px;
+
+font-size:40px;
+
+cursor:pointer;
+
+}
+
+.flechas{
+
+margin-top:25px;
+
+display:flex;
+
+gap:40px;
+
+}
+
+.flechas button{
+
+padding:12px 28px;
+
+background:none;
+
+border:1px solid white;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.flechas button:hover{
+
+background:white;
+
+color:black;
+
+}
+
+@media(max-width:700px){
+
+header h1{
+
+font-size:38px;
+
+}
+
+header h2{
+
+font-size:22px;
+
+}
+
+.descripcion{
+
+font-size:18px;
+
+}
+
+.galeria{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<a href="descubre.html" class="volver">← Volver</a>
+
+<header>
+
+<img src="logo.png">
+
+<h1>PIEZA I</h1>
+
+<h2>Blazer dress sastre</h2>
+
+<p class="descripcion">
+
+Diseño de una pieza con estructura inspirada en la sastrería clásica, con cuerpo tipo blazer corto y caída larga tableada.
+
+La silueta busca equilibrar fuerza y elegancia mediante líneas limpias, proporciones estructuradas y un movimiento fluido que acompaña al cuerpo sin perder presencia.
+
+</p>
+
+</header>
+
+<div class="linea"></div>
+
+<div class="principal fade">
+
+<img src="img/pieza1-1.jpg" onclick="abrir(0)">
+
+</div>
+
+<div class="galeria">
+
+<img class="fade" src="img/pieza1-2.jpg" onclick="abrir(1)">
+
+<img class="fade" src="img/pieza1-3.jpg" onclick="abrir(2)">
+
+</div>
+
+<footer>
+
+NCY · Edición limitada · Hecho en México
+
+</footer>
+
+<div class="lightbox" id="visor">
+
+<span class="cerrar" onclick="cerrar()">&times;</span>
+
+<img id="imagenGrande">
+
+<div class="flechas">
+
+<button onclick="anterior()">← Anterior</button>
+
+<button onclick="siguiente()">Siguiente →</button>
+
+</div>
+
+</div>
+
+<script>
+
+const imagenes=[
+
+"pieza1p.jpeg",
+"pieza1d.jpeg",
+"pieza1d1.jpeg"
+
+];
+
+let actual=0;
+
+function abrir(i){
+
+actual=i;
+
+document.getElementById("visor").style.display="flex";
+
+document.getElementById("imagenGrande").src=imagenes[i];
+
+}
+
+function cerrar(){
+
+document.getElementById("visor").style.display="none";
+
+}
+
+function siguiente(){
+
+actual++;
+
+if(actual>=imagenes.length){
+
+actual=0;
+
+}
+
+document.getElementById("imagenGrande").src=imagenes[actual];
+
+}
+
+function anterior(){
+
+actual--;
+
+if(actual<0){
+
+actual=imagenes.length-1;
+
+}
+
+document.getElementById("imagenGrande").src=imagenes[actual];
+
+}
+
+const elementos=document.querySelectorAll(".fade");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+}
+
+});
+
+});
+
+elementos.forEach((el)=>observer.observe(el));
+
+document.addEventListener("keydown",(e)=>{
+
+if(document.getElementById("visor").style.display=="flex"){
+
+if(e.key==="ArrowRight") siguiente();
+
+if(e.key==="ArrowLeft") anterior();
+
+if(e.key==="Escape") cerrar();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
